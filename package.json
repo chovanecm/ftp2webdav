@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "A reverse proxy that forwards WebDAV requests to an HTTPS server with an invalid certificate.",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "http-proxy": "^1.8.1"
+    "dotenv": "^16.4.7",
+    "ftp-srv": "^4.6.3",
+    "http-proxy": "^1.18.1",
+    "lodash": "^4.17.21",
+    "uuid": "^11.1.0",
+    "webdav-fs": "^4.0.1"
   }
 }
