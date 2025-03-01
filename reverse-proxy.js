@@ -34,7 +34,7 @@ module.exports = function startProxy(targetUrl, localPort) {
         console.log(`[${new Date().toISOString()}] Response Headers:`, proxyRes.headers);
         if (req.method === 'GET' || true) {
             let body = [];
-
+            // TODO try to make this work without storing data in-memory but stream it instead
             proxyRes.on('data', (chunk) => {
                 body.push(chunk);
             });
