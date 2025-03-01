@@ -1,6 +1,6 @@
 # FTP to WebDAV Gateway
 
-This project sets up an FTP server that proxies requests to a WebDAV server. It includes a reverse proxy to monitor HTTP communication and tweak HTTP headers to the WebDAV server.
+This project starts an FTP server that uses a WebDAV connection as its backend. This allows a regular FTP client to manipulate files stored in a WebDAV repository.
 
 ## Prerequisites
 
