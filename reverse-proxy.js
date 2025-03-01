@@ -21,6 +21,13 @@ module.exports = function startProxy(targetUrl, localPort) {
             proxyReq.setHeader('Connection', 'TE');
             proxyReq.setHeader('TE', 'trailers');
             proxyReq.setHeader('Translate', 'f');
+        } else if (req.method === "MOVE") {
+            // Detect http://localost:{port} and replace it with target url in Destination header
+            const destination = req.headers['destination'];
+            if (destination) {
+                const newDestination = destination.replace(`http://localhost:${PORT}`, TARGET_URL);
+                proxyReq.setHeader('Destination', newDestination);
+            }
         }
 
         console.log(`[${new Date().toISOString()}] ${req.method}: ${req.url}`);
