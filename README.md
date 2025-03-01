@@ -54,7 +54,8 @@ The reverse proxy is used to tweak HTTP requests to the WebDAV server due to com
 
 ### Supported operations
 
-ftp2webdav supports browsing of directories, deleting files, uploading files, and perhaps more. Not all FTP commands are supported, though.
+ftp2webdav supports directory listing, creating directories,  downloading, uploading, deleting and renaming.
+Other FTP or WebDAV commands, such as chmod, lock acquiring or file timestamp modifications are not implemented and will most likely fail.
 
 Tested with Microsoft IIS WebDAV server.
 
