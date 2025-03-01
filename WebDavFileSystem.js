@@ -158,8 +158,8 @@ class WebDavFileSystem extends FileSystem{
 
     mkdir(path) {
         const {clientPath} = this._resolvePath(path);
-        return this.fsAsync.mkdir(clientPath, { recursive: true })
-            .then(() => clientPath);
+        return this.fsAsync.mkdir(clientPath)
+            .then(()=> clientPath);
     }
 
     rename(from, to) {
