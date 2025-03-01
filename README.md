@@ -2,6 +2,8 @@
 
 This project starts an FTP server that uses a WebDAV connection as its backend. This allows a regular FTP client to manipulate files stored in a WebDAV repository.
 
+It is built on [ftp-srv](https://github.com/QuorumDMS/ftp-srv) and [webdav-fs](https://github.com/perry-mitchell/webdav-fs).
+
 ## Prerequisites
 
 - Node.js
@@ -11,8 +13,8 @@ This project starts an FTP server that uses a WebDAV connection as its backend. 
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/chovanecm/ftp2webdav
+    cd ftp2webdav
     ```
 
 2. Install dependencies:
@@ -45,7 +47,16 @@ Start the FTP to WebDAV gateway:
 npm start
 ```
 
-This will start the FTP server and the reverse proxy. The FTP server will listen on the port specified in the `.env` file (default is 21), and the reverse proxy will listen on the port specified in the `.env` file (default is 8080).
+This will start the FTP server and a reverse HTTP proxy. The FTP server will listen on the port specified in the `.env` file (default is 21). 
+The FTP server translates FTP commands to HTTP requests that are routed through a locally running reverse HTTP proxy and then to the remote WebDAV repository. The reverse proxy will listen on the port specified in the `.env` file (default is 8080).
+
+The reverse proxy is used to tweak HTTP requests to the WebDAV server due to compatibility issues discovered during the development.
+
+### Supported operations
+
+ftp2webdav supports browsing of directories, deleting files, uploading files, and perhaps more. Not all FTP commands are supported, though.
+
+Tested with Microsoft IIS WebDAV server.
 
 ## Project Structure
 
