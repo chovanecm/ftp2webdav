@@ -45,5 +45,7 @@ ftp.on('login', ({ username, password }, resolve, reject) => {
 
 
 
-ftp.listen();
-console.log(`FTP server listening on port ${FTP_PORT}`);
+ftp.listen().then(() => {
+  console.log(`FTP server listening on port ${FTP_PORT}`);
+}).catch(console.error);
+
